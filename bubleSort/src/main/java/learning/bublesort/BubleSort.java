@@ -7,7 +7,7 @@ public class BubleSort {
         int[] array = {30, 2, 10, 4, 6};
         int length = array.length;
         int temp;
-        for (int i = 0; i < length - 1; i ++) {
+        for (int i = 0; i < length - 1; i+=1) {
             for (int j = length - 1; j > i; j--) {
                 if(array[j - 1] > array[j]) {
                     temp = array[j - 1];
