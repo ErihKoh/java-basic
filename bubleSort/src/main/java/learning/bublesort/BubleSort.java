@@ -5,30 +5,23 @@ public class BubleSort {
 
     public static void main(String[] args) {
         int[] array = {30, 2, 10, 4, 6};
-		int length = array.length;
+        int length = array.length;
+        int temp;
+        for (int i = 0; i < length - 1; i ++) {
+            for (int j = length - 1; j > i; j--) {
+                if(array[j - 1] > array[j]) {
+                    temp = array[j - 1];
+                    array[j - 1] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+
+        for (int i = 0; i < length; i++) {
+            System.out.print(array[i] + " ");
+        }
                 
-                int currentFirstIndex = 0;
-                int currentSecondIndex = currentFirstIndex + 1;
-                int temp;
-
-		for (int i = 0; i < length; i++) {
-			if (array[currentFirstIndex] > array[currentSecondIndex]) {
-                            temp = array[currentFirstIndex];
-                            
-                            array[currentFirstIndex] = array[currentSecondIndex];
-                            
-                            array[currentSecondIndex] = temp; 
-                            
-                  
-                        }
-                        
-                        currentFirstIndex += 1;
-                        
-                       
-                }
-
-		for (int i = 0; i < length; i++) {
-			System.out.print(array[i] + " ");
-                }
+                
     }
+   
 }
