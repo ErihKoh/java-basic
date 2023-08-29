@@ -1,4 +1,5 @@
 package learning.binarytree;
+import java.util.Stack;
 
 
 public class BinaryTree {
@@ -6,13 +7,25 @@ public class BinaryTree {
     public static void main(String[] args) {
        Tree tree = new Tree();
        tree.insertNode(6);
-//       tree.insertNode(8);
-       //tree.insertNode(5);
-       // tree.searchNodeByValue(8);
+       tree.insertNode(8);
+       tree.insertNode(5);
+       tree.insertNode(8);
+       tree.insertNode(2);
+       tree.insertNode(9);
+       tree.insertNode(7);
+       tree.insertNode(4);
+       tree.insertNode(10);
+       tree.insertNode(3);
+       tree.insertNode(1);
+       
        
       
        // отображение дерева:
-       System.out.println(tree);
+       tree.printTree();
+       
+       
+       Node foundNode = tree.searchNodeByValue(7);
+       foundNode.printNode();
     }
 }
 
@@ -99,22 +112,15 @@ class Tree {
             Node parentNode;
             
             while (true) {
+                
+                parentNode = currentNode;
+                
                 if (value == currentNode.getValue()) {
                     System.out.println("Node already exist");
                     return;
                 }
                 
-                parentNode = currentNode;
-                
-                
                 if (value < currentNode.getValue()) {
-                    currentNode = currentNode.getRightNode();
-                    if (currentNode == null) {
-                        parentNode.setRightNode(rootNode);
-                        return;
-                    
-                }
-                else if (value < currentNode.getValue()) {
                     currentNode = currentNode.getLeftNode();
                     if (currentNode == null) {
                         parentNode.setLeftNode(newNode);
@@ -122,10 +128,58 @@ class Tree {
                     }
                 }
                 
+                if (value > currentNode.getValue()) {
+                    currentNode = currentNode.getRightNode();
+                    if (currentNode == null) {
+                        parentNode.setRightNode(newNode);
+                        return;
+                    
+                }
+                
+                
                 }
             }
         }
         
     }
+    
+    public void printTree() { // метод для вывода дерева в консоль
+       Stack globalStack = new Stack(); // общий стек для значений дерева
+       globalStack.push(rootNode);
+       int gaps = 32; // начальное значение расстояния между элементами
+       boolean isRowEmpty = false;
+       String separator = "-----------------------------------------------------------------";
+       System.out.println(separator);// черта для указания начала нового дерева
+       while (isRowEmpty == false) {
+           Stack localStack = new Stack(); // локальный стек для задания потомков элемента
+           isRowEmpty = true;
+
+           for (int j = 0; j < gaps; j++)
+               System.out.print(' ');
+           while (globalStack.isEmpty() == false) { // покуда в общем стеке есть элементы
+               Node temp = (Node) globalStack.pop(); // берем следующий, при этом удаляя его из стека
+               if (temp != null) {
+                   System.out.print(temp.getValue()); // выводим его значение в консоли
+                   localStack.push(temp.getLeftNode()); // соохраняем в локальный стек, наследники текущего элемента
+                   localStack.push(temp.getRightNode());
+                   if (temp.getLeftNode() != null ||
+                           temp.getRightNode() != null)
+                       isRowEmpty = false;
+               }
+               else {
+                   System.out.print("__");// - если элемент пустой
+                   localStack.push(null);
+                   localStack.push(null);
+               }
+               for (int j = 0; j < gaps * 2 - 2; j++)
+                   System.out.print(' ');
+           }
+           System.out.println();
+           gaps /= 2;// при переходе на следующий уровень расстояние между элементами каждый раз уменьшается
+           while (localStack.isEmpty() == false)
+               globalStack.push(localStack.pop()); // перемещаем все элементы из локального стека в глобальный
+       }
+       System.out.println(separator);// подводим черту
+   }
    
 }
