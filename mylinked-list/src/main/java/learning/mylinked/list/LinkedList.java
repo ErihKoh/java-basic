@@ -52,10 +52,18 @@ public class LinkedList {
     public boolean delete(int index) {
         Node currentNode = firstNode;
         Node deletedNode = null;
-        if (index >= 0 || index <= length) {
+        
+        if (index == 0) {
+            firstNode = null;
+            return false;
+        }
+        else if (index > 0 || index <= length) {
             for (int i = 0; i < length; i += 1) {
+                if (i == index) {
+                    
+                }
                 
-                
+                currentNode = currentNode.getNext();
             }
         }
         return false;    
