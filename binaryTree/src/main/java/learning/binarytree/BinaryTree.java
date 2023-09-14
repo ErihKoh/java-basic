@@ -22,8 +22,5 @@ public class BinaryTree {
        // отображение дерева:
        tree.printTree();
        
-       
-       Node foundNode = tree.searchNodeByValue(7);
-       foundNode.printNode();
     }
 }
