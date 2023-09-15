@@ -25,22 +25,18 @@ public class MainRPG {
         while (true) {
         
             heroMove();
-        
+            
+            if (isGameOver()) break;
+            
             printStatistic();
             
-            if (monsterHP <= 0) {
-                System.out.println("The hero win");
-                break;
-            }
-        
             monsterMove();
-
+            
+            if (isGameOver()) break;
+            
             printStatistic();
             
-            if (heroHP <= 0) {
-                System.out.println("The monster win");
-                break;
-            }
+            
         
         }
         
@@ -100,7 +96,7 @@ public class MainRPG {
         int monsterCommand = random.nextInt(2);
             
         if (monsterCommand == 0) {
-            System.out.println("Her0 had damage " + monsterAttack);
+            System.out.println("Hero had damage " + monsterAttack);
             heroHP -= monsterAttack;
             
         } else if (monsterCommand == 1) {
@@ -117,4 +113,16 @@ public class MainRPG {
         
         System.out.println("The figth has started");
     } 
+    
+    public static boolean isGameOver() {
+        if (monsterHP <= 0) {
+            System.out.println("The hero win");
+            return true;
+        }
+        if (heroHP <= 0) {
+            System.out.println("The monster win");
+            return true;
+            }
+        return false;
+    }
 }
