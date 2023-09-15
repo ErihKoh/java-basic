@@ -4,30 +4,76 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class MainRPG {
+    
+    static Scanner scanner;
+    static Random random;
+    
+    static String heroName;
+    static int heroHP;
+    static int heroAttack;
+        
+    static String monsterName;
+    static int monsterHP;
+    static int monsterAttack;
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
+        
+        init();
+        
+        startingGame();
+
+        while (true) {
+        
+            heroMove();
+        
+            printStatistic();
+            
+            if (monsterHP <= 0) {
+                System.out.println("The hero win");
+                break;
+            }
+        
+            monsterMove();
+
+            printStatistic();
+            
+            if (heroHP <= 0) {
+                System.out.println("The monster win");
+                break;
+            }
+        
+        }
+        
+        System.out.println("The game ended");
+        
+    }
+    
+    public static void printStatistic() {
+        System.out.println("===============================================");
+        System.out.println("Statictic: ");
+        System.out.println("Hero " + heroName + " has HP " + heroHP);
+        System.out.println("Monster " + monsterName + " has HP " + monsterHP);
+        System.out.println("===============================================");
+    }
+    
+    public static void init() {
+        
+        scanner = new Scanner(System.in);
+        random = new Random();
         
         System.out.println("Enter name your hero");
         
-        String heroName = scanner.next();
-        int heroHP = 10;
-        int heroAttack = 4;
+        heroName = scanner.next();
+        heroHP = 10;
+        heroAttack = 4;
         
-        String monsterName = "Ork";
-        int monsterHP = 8;
-        int monsterAttack = 2;
-        
-        System.out.println("The game started");
-        
-        System.out.println("Hero " + heroName + " has entered in the forest and met the monster " + monsterName + " started figth" );
-        
-        System.out.println("The figth has started");
-        
-//        The hero is moving
-        while (true) {
-            System.out.println("Hero's move");
+        monsterName = "Ork";
+        monsterHP = 8;
+        monsterAttack = 2;
+    }
+    
+    public static void heroMove() {
+        System.out.println("Hero's move");
         
         System.out.println("Select action: 1. Attack, 2. Defend");
         
@@ -36,10 +82,7 @@ public class MainRPG {
         if (command == 1) {
             monsterHP -= heroAttack;
             System.out.println("Monster had damage " + heroAttack);
-            if (monsterHP <= 0) {
-                System.out.println("The hero win");
-                break;
-            }
+            
         }
         else if (command == 2) {
             
@@ -50,38 +93,28 @@ public class MainRPG {
         else {
             System.out.println("You leave move");
         }
-        
-        System.out.println("Hero " + heroName + " has HP " + heroHP);
-        System.out.println("Monster " + monsterName + " has HP " + monsterHP);
-        
-//        The monster is moving
-
+    }
+    
+    public static void monsterMove() {
         System.out.println("Monster's move");
         int monsterCommand = random.nextInt(2);
             
         if (monsterCommand == 0) {
+            System.out.println("Her0 had damage " + monsterAttack);
             heroHP -= monsterAttack;
-            if (heroHP <= 0) {
-                System.out.println(monsterName + " win");
-                break;
-            }
+            
         } else if (monsterCommand == 1) {
             System.out.println("The monster has 1 point life");
             monsterHP += 3;
         }
      
-        
-        if (heroHP <= 0) {
-            System.out.println("The monster win");
-            break;
-        }
-        System.out.println("=========================================");
-        System.out.println("Hero " + heroName + " has HP " + heroHP);
-        System.out.println("Monster " + monsterName + " has HP " + monsterHP);
-        System.out.println("===============================================");
-        }
-        
-        System.out.println("The game ended");
-        
     }
+    
+    public static void startingGame() {
+        System.out.println("The game started");
+        
+        System.out.println("Hero " + heroName + " has entered in the forest and met the monster " + monsterName + " started figth" );
+        
+        System.out.println("The figth has started");
+    } 
 }
