@@ -36,8 +36,6 @@ public class MainRPG {
             
             printStatistic();
             
-            
-        
         }
         
         System.out.println("The game ended");
