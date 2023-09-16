@@ -4,11 +4,25 @@ package learning.mainrpg;
 public class MainRPG {
 
     public static void main(String[] args) {
-        Unit hero = new Unit("Arthur", 10, 2);
-        Unit monster = new Unit("Goblin", 8, 1);
+        Unit hero = new Unit("Arthur", 15, 2, 2);
+        Unit monster = new Unit("Goblin", 12, 3, 1);
         
-        monster.printInfo();
+        hero.startMove();
         hero.attack(monster, hero);
-        monster.printInfo();
+        
+        monster.startMove();
+        monster.attack(hero, monster);
+        
+        monster.startMove();
+        hero.defenceState();
+        monster.attack(hero, monster);
+        
+        hero.startMove();
+        
+        System.out.println("The hero is going through the dungeon"
+                + "and steping on a trap");
+        hero.takeDamage(3);
+        
+        hero.startMove();
 }
 }
