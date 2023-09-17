@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package learning.thetictactoe;
 
-/**
- *
- * @author Admin
- */
+
 public class Referee {
-    
+
+    public void put(Move move, Board board) {
+    }
+
+    public boolean isWin(Move move, Board board) {
+		return false;
+    }
+
 }

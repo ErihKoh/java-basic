@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package learning.thetictactoe;
 
-/**
- *
- * @author Admin
- */
+
 public class Player {
-    
+    public Player(ActionFigure figure) {
+    }
+
+    public Move turn(Board board) {
+	return null;
+        }
+	
 }
