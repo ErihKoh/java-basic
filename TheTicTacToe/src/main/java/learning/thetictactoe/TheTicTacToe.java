@@ -12,8 +12,8 @@ public class TheTicTacToe {
 	Player player2 = new Player(ActionFigure.CROSS);
 
 	Board board = new Board(); 
-        board.boardInit();
         board.print();
+        System.out.println(player1);
 		
 		/*
 		 * Клас Поле містить метод hasMoreSpace(), що повертатиме true якщо ще залишилося дві
