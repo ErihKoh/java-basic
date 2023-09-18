@@ -40,7 +40,7 @@ public class Player {
             return false;
         }
         
-        if (board.getMap()[y][x] != ActionFigure.EMPTY) {
+        if (board.getMap()[x][y] != ActionFigure.EMPTY) {
             System.out.println("The field isn't empty.");
             return false;
         }

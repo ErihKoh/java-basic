@@ -25,8 +25,14 @@ public class Board {
     }
     
 
-    public boolean hasMoreSpace() {
-	return false;
+    public boolean hasMoreSpace(Board board) {
+        
+        for (int i = 0; i < board.getBoardSize(); i++) {
+            for (int j = 0; j < board.getBoardSize(); j++) {
+                if (board.getMap()[i][j] == ActionFigure.EMPTY) return false;   
+            } 
+        }
+        return true;
     }
 
     public void print() {
