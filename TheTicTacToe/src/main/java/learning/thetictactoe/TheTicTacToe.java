@@ -8,12 +8,16 @@ public class TheTicTacToe {
 		 * При створенні гравця в його конструктор буде передано тип елементу
 		 * який він буде використовувати на полі: хрестик або нулик
 		 */		
-	Player player1 = new Player(ActionFigure.NOUGHT);
-	Player player2 = new Player(ActionFigure.CROSS);
+	Player player1 = new Player(ActionFigure.CROSS);
+	Player player2 = new Player(ActionFigure.NOUGHT);
+        Player player3 = new Player(ActionFigure.EMPTY);
 
 	Board board = new Board(); 
         board.print();
-        System.out.println(player1);
+        System.out.println("player2: " + player2);
+        System.out.println("player1: " + player1);
+        System.out.println("player3: " + player3);
+        
 		
 		/*
 		 * Клас Поле містить метод hasMoreSpace(), що повертатиме true якщо ще залишилося дві

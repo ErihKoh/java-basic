@@ -3,7 +3,7 @@ package learning.thetictactoe;
 
 public class Player {
     
-    private static ActionFigure figure;
+    private ActionFigure figure;
     
     public Player(ActionFigure figure) {
         this.figure = figure;
