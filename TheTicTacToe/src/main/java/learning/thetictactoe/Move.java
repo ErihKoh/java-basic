@@ -29,4 +29,15 @@ public class Move {
     public void setFigure(ActionFigure figure) {
 	this.figure = figure;
     }
+    
+    
+    @Override
+    public String toString() {
+        
+       return "Move{" +
+               "figure=" + getFigure() +
+               ", Y=" + getY() +
+               ", X=" + getX() +
+               '}';
+   }
 }

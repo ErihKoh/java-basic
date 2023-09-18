@@ -5,7 +5,7 @@ package learning.thetictactoe;
 public class Board {
     
     private static final int BOARD_SIZE = 3;
-    private static ActionFigure[][] map;
+    private  ActionFigure[][] map;
     
     Board() {
         map = new ActionFigure[BOARD_SIZE][BOARD_SIZE];
@@ -15,6 +15,15 @@ public class Board {
             }
         }
     }
+    
+    public int getBoardSize() {
+        return Board.BOARD_SIZE;
+    }
+    
+    public ActionFigure[][] getMap() {
+        return this.map;
+    }
+    
 
     public boolean hasMoreSpace() {
 	return false;
@@ -27,10 +36,10 @@ public class Board {
         // 3 * * *
         
         for (int i = 0; i <= BOARD_SIZE; i++) {
-            System.out.print((i + 1) + " "); //0 1 2 3
+            System.out.print(i + " "); //0 1 2 3
         }
         
-        System.out.println("");
+        System.out.println();
         
         for (int i = 0; i < BOARD_SIZE; i++) {
             System.out.print((i + 1) + " ");
@@ -38,7 +47,7 @@ public class Board {
                 System.out.print(map[i][j] + " ");
             }
             
-            System.out.println("");
+            System.out.println();
         }
             
     }

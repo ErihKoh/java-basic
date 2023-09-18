@@ -10,14 +10,18 @@ public class TheTicTacToe {
 		 */		
 	Player player1 = new Player(ActionFigure.CROSS);
 	Player player2 = new Player(ActionFigure.NOUGHT);
-        Player player3 = new Player(ActionFigure.EMPTY);
-
+        
 	Board board = new Board(); 
         board.print();
-        System.out.println("player2: " + player2);
-        System.out.println("player1: " + player1);
-        System.out.println("player3: " + player3);
+        Move move = player2.turn(board);
+        referee.put(move, board);
+        board.print();
         
+        Move move1 = player1.turn(board);
+        referee.put(move1, board);
+        board.print();
+            
+//        System.out.println("move: " + move);
 		
 		/*
 		 * Клас Поле містить метод hasMoreSpace(), що повертатиме true якщо ще залишилося дві
@@ -35,8 +39,8 @@ public class TheTicTacToe {
 			 *
 			 */
 			
-            Move move = player1.turn(board);
-			/*
+//            Move move = player1.turn(board);
+            			/*
 			 * відповідальність за розміщення елементів на Полі несе Суддя 
 			 * Він НЕ перевіряє правильність ходу, просто розміщує елемент на полі
 			 */
@@ -62,7 +66,7 @@ public class TheTicTacToe {
 			 * В якості додаткового завдання пропоную уважно переглянути тіло
 			 * циклу та винести код, що повторюється в окремий метод
 			 */
-            move = player2.turn(board);
+//            move = player2.turn(board);
             referee.put(move, board);
             board.print();
             if (referee.isWin(move, board)) {
