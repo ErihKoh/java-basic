@@ -1,33 +1,40 @@
 package learning.rlecoding;
 
-import java.util.Arrays;
-
 
 public class RLEcoding {
     
     public static void main(String[] args) {
         
-        if (args != null && args.length > 0) {
-            
-            String temp;
-            
-            StringBuilder strBuild = new
-            
-            int counter = 0;
-            
-            String[] strArr = args[0].split("");
-            temp = strArr[0];
-            for (String item: strArr) {
-                if (temp == item) {
-                    counter++;
-                    if (counter == 9) {
-                        
-                    }
+        System.out.println(encode("AAABBBCCCDDDDDDDDDDD"));
+    }  
+    
+    public static String encode(String data) {
+        
+        StringBuilder encoded = new StringBuilder();
+        char temp = data.charAt(0);
+        int counter = 1;
+        
+        for (int i = 1; i < data.length(); i++) {
+            if (data.charAt(i) == temp) {
+                if (counter < 9) counter++;
+                else {
+                    encoded.append(temp);
+                    encoded.append(9);
+                    counter = 1;
                 }
-                
+            }
+            else {
+                encoded.append(temp);
+                encoded.append(counter);
+                temp = data.charAt(i);
+                counter = 1;
             }
             
-            
-        } else System.out.println("");
-    }    
+        }
+        
+        encoded.append(temp);
+        encoded.append(counter);
+        
+        return encoded.toString();
+    }
 }
