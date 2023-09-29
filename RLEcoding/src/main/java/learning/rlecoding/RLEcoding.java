@@ -5,7 +5,7 @@ public class RLEcoding {
     
     public static void main(String[] args) {
         if (args != null && args.length > 0) {
-            System.out.println("Encoded: " + encode(args[0]));
+            System.out.println(encode(args[0]));
         } else {
           
             System.out.println("Pass string");
