@@ -4,12 +4,17 @@ package learning.rlecoding;
 public class RLEcoding {
     
     public static void main(String[] args) {
+        if (args != null && args.length > 0) {
+            System.out.println("Encoded: " + encode(args[0]));
+        } else {
+          
+            System.out.println("Pass string");
+        }
         
-        System.out.println(encode("AAABBBCCCDDDDDDDDDDD"));
     }  
     
     public static String encode(String data) {
-        
+        if (data.equals("")) return "";
         StringBuilder encoded = new StringBuilder();
         char temp = data.charAt(0);
         int counter = 1;
