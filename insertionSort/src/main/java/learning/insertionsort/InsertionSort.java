@@ -18,7 +18,7 @@ public class InsertionSort {
 
             while(idx >= 0 && array[idx] > key){
                 array[idx + 1] = array[idx];
-                idx = idx - 1;
+                idx --;
                 counter ++;
             }
             array[idx + 1] = key;
